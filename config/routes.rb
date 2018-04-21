@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  get 'users'
+  devise_for :users
   get '/' => 'books#top'
   get '/about' => 'books#about'
   resources :books
