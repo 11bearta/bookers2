@@ -1,12 +1,36 @@
-<h2>New book</h2>
-<%= form_for(@book) do |f| %>
 
-<h4>title</h4>
-<%= f.text_field :Title %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<%= render 'books/side', book: @book, user: @user %>
+		</div>
+		<div class="col-lg-8">
+			<h2>Books</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @books_show.each do |data| %>
+						<tr>
+							<td><%= data.Title %></td>
+							<td><%= data.Opinion %></td>
+							<% if data.user == current_user %>
+								<td><%= link_to "編集", edit_book_path(data), class: "btn btn-primary" %></td>
+								<td><%= link_to "削除", book_path(data), method: :delete, class: "btn btn-danger" %></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
 
-<h4>内容</h4>
-<%= f.text_area :Opinion %>
 
-<%= f.submit "Update Book" %>
 
-<% end %>

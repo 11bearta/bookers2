@@ -1,1 +1,30 @@
-ここはbooksいんでっくす
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<%= render 'books/side', book: @book, user: @user %>
+		</div>
+		<div class="col-lg-8">
+			<h2>Books</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>icon</th>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @books.each do |data| %>
+						<tr>
+							<td><%= attachment_image_tag(data.user, :image, :fill, 30, 30, format:'jpeg', fallback: "noimage.png",size: '30x30', class: "icon") %>
+</td>
+							<td><%= link_to data.Title, book_path(data.id) %></td>
+							<td><%= data.Opinion %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

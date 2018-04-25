@@ -1,12 +1,48 @@
-<!-- <h2>New book</h2>
-<%= form_for() do |f| %>
+
+
+		<h2>User info</h2>
+			<div class="icon_div">
+
+<%= attachment_image_tag(user, :image, :fill, 100, 100, format:'jpeg', fallback: "noimage.png",size: '100x100', class: "icon") %>
+
+			</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th><%= user.name %></th>
+				</tr>
+				<tr>
+					<th>introduction</th>
+					<th><%= user.introduction %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<% if user.id == current_user.id %>
+					<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %></td>
+					<% end %>
+				</tr>
+				
+			</tbody>
+		</table>
+		
+
+
+
+
+
+<h2>New book</h2>
+<%= form_for(book) do |f| %>
 
 <h4>title</h4>
-<%= f.text_field :title %>
+<%= f.text_field :Title, class: "form-group form-control" %>
 
 <h4>body</h4>
-<%= f.text_area :body %>
+<%= f.text_area :Opinion, class: "form-group form-control" %>
+<br>
+<%= f.submit "Update Book", class: "btn btn-default" %>
 
-<%= f.submit "Update Book" %>
+<% end %>
 
-<% end %> -->
+

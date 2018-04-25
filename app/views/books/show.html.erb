@@ -1,2 +1,33 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+
+
+
+
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-4">
+			<%= render 'books/side', book: @book, user: @book_show.user %>
+			
+		</div>
+
+		<div class="col-lg-8">
+		<h2>Book</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @book_show.Title %></td>
+						<td><%= @book_show.Opinion %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

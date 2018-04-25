@@ -1,2 +1,33 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<%= render 'books/side', book: @book, user: @user %>
+		</div>
+		<div class="col-lg-8">
+			<h2>Users</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>name</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |data| %>
+						<tr>
+							<td></td>
+							<td><%= data.name %></td>
+							<td><%= link_to "show",user_path(data.id) %></td>
+
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
