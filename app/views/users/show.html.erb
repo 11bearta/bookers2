@@ -20,7 +20,7 @@
 							<td><%= data.Opinion %></td>
 							<% if data.user == current_user %>
 								<td><%= link_to "編集", edit_book_path(data), class: "btn btn-primary" %></td>
-								<td><%= link_to "削除", book_path(data), method: :delete, class: "btn btn-danger" %></td>
+								<td><%= link_to "削除", book_path(data), method: :delete,data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></td>
 							<% end %>
 						</tr>
 					<% end %>

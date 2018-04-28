@@ -2,9 +2,15 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
     # before_action :current_user!, only:[:edit]
   def show
+
+    if User.find_by(id: params[:id])
+
   	@user = User.find(params[:id])
   	@book = Book.new
     @books_show = @user.books
+
+  else redirect_to users_path
+    end
   end
 
   def index
@@ -15,8 +21,7 @@ class UsersController < ApplicationController
 
   def edit
       @user = User.find(params[:id])
-        if @user == current_user
-        else
+        if @user != current_user
           redirect_to users_path
         end
 
@@ -25,8 +30,11 @@ class UsersController < ApplicationController
 
     def update
       @user = User.find(params[:id])
-      @user.update(user_params)
+      if @user.update(user_params)
       redirect_to user_path(current_user.id)
+    else
+      render :edit
+    end
     end
 
 
